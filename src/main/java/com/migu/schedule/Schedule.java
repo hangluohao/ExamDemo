@@ -2,10 +2,9 @@ package com.migu.schedule;
 
 
 import com.migu.schedule.constants.ReturnCodeKeys;
-import com.migu.schedule.info.Task;
 import com.migu.schedule.info.TaskContainer;
 import com.migu.schedule.info.TaskInfo;
-
+import com.migu.schedule.info.Tasktest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
@@ -17,11 +16,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Schedule {
     private ConcurrentHashMap<Integer, Integer> nodeMap = new ConcurrentHashMap();
     private TreeMap<Integer, Integer> taskMap = new TreeMap();
-
-    //每个结点和所对应的consumption
     private List<TaskContainer> containList = new ArrayList<TaskContainer>();
-    private List<Task> taskList = new ArrayList();
-    private List<Task> originalTastList = new ArrayList();
+    private List<Tasktest> taskList = new ArrayList();
+    private List<Tasktest> originalTastList = new ArrayList();
 
 
     //系统初始化
@@ -60,7 +57,7 @@ public class Schedule {
         if (taskId <= 0) return ReturnCodeKeys.E009;
         if (taskMap.get(taskId) != null) return ReturnCodeKeys.E010;
         taskMap.put(taskId, consumption);
-        originalTastList.add(new Task(taskId, consumption));
+        originalTastList.add(new Tasktest(taskId, consumption));
         return ReturnCodeKeys.E008;
 
     }
@@ -90,7 +87,7 @@ public class Schedule {
     //查询节点
     private int queryNodeIdInResult(int taskId) {
         for (TaskContainer c : containList) {
-            for (Task t : c.getTaskList()) {
+            for (Tasktest t : c.getTaskList()) {
                 if (taskId == t.getTaskId()) return c.getNodeId();
             }
         }
@@ -100,7 +97,7 @@ public class Schedule {
 
     //查询任务状态列表
     public int queryTaskStatus(List<TaskInfo> tasks) {
-        for(Task t:originalTastList){
+        for(Tasktest t:originalTastList){
             TaskInfo taskInfo  = new TaskInfo();
             taskInfo.setTaskId(t.getTaskId());
             tasks.add(taskInfo);

@@ -1,12 +1,12 @@
 package com.migu.schedule.info;
 
 
-public class Task {
+public class Tasktest {
 
 		private Integer taskId;
 		private Integer consumption;
 
-		public Task(Integer taskId, Integer consumption) {
+		public Tasktest(Integer taskId, Integer consumption) {
 			this.taskId = taskId;
 			this.consumption = consumption;
 		}

@@ -4,31 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskContainer {
-	private int nodeId;
-	private Integer totalConsumption = 0;
+	private int theId;
+	private Integer allX = 0;
 	private int taskNum = 0;
-	private Integer taskNOSum = 0;
+	private Integer allNOSum = 0;
+	private List<Tasktest> taskList = new ArrayList<Tasktest>();
 
-	private List<Task> taskList = new ArrayList<Task>();
-
-	public TaskContainer(int nodeId) {
-		this.nodeId = nodeId;
+	public TaskContainer(int theId) {
+		this.theId = theId;
 	}
 
 	public int getNodeId() {
-		return nodeId;
+		return theId;
 	}
 
-	public void setNodeId(int nodeId) {
-		this.nodeId = nodeId;
+	public void setNodeId(int theId) {
+		this.theId = theId;
 	}
 
 	public Integer getTotalConsumption() {
-		return totalConsumption;
+		return allX;
 	}
 
-	public void setTotalConsumption(Integer totalConsumption) {
-		this.totalConsumption = totalConsumption;
+	public void setTotalConsumption(Integer allX) {
+		this.allX = allX;
 	}
 
 	public int getTaskNum() {
@@ -39,26 +38,26 @@ public class TaskContainer {
 		this.taskNum = taskNum;
 	}
 
-	public void addToContainer(Task t) {
+	public void addToContainer(Tasktest t) {
 		taskList.add(t);
 		taskNum++;
-		taskNOSum += t.getTaskId();
-		totalConsumption += t.getConsumption();
+		allNOSum += t.getTaskId();
+		allX += t.getConsumption();
 	}
 
 	public Integer getTaskNOSum() {
-		return taskNOSum;
+		return allNOSum;
 	}
 
-	public void setTaskNOSum(Integer taskNOSum) {
-		this.taskNOSum = taskNOSum;
+	public void setTaskNOSum(Integer allNOSum) {
+		this.allNOSum = allNOSum;
 	}
 
-	public List<Task> getTaskList() {
+	public List<Tasktest> getTaskList() {
 		return taskList;
 	}
 
-	public void setTaskList(List<Task> taskList) {
+	public void setTaskList(List<Tasktest> taskList) {
 		this.taskList = taskList;
 	}
 }
